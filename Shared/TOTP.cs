@@ -1,52 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using Yort.Otp;
 
 namespace Shared
 {
-    public class TOTP
+    public class Totp
     {
-        public const int digits = 8; // digits of code
-        public const int period = 10; // interval for new TOTP in seconds
-        public const int tolerance = 1; // how many cycles either back or ahead to tolerate
-        private byte[] secret;
-        private TimeBasedPasswordGenerator totp;
+        public const int Digits = 8; // digits of code
+        private const int Period = 10; // interval for new TOTP in seconds
+        private const int Tolerance = 1; // how many cycles either back or ahead to tolerate
+        private readonly byte[] _secret;
+        private readonly TimeBasedPasswordGenerator _totp;
 
-        public TOTP(byte[] secret)
+        public Totp(byte[] secret)
         {
-            this.totp = new TimeBasedPasswordGenerator(true, secret);
-            this.totp.TimeInterval = TimeSpan.FromSeconds(period);
-            this.totp.PasswordLength = digits;
-            this.secret = secret;
+            this._totp = new TimeBasedPasswordGenerator(true, secret)
+            {
+                HashAlgorithm = null,
+                PasswordLength = 0,
+                TimeInterval = default,
+                Timestamp = null
+            };
+            this._totp.TimeInterval = TimeSpan.FromSeconds(Period);
+            this._totp.PasswordLength = Digits;
+            this._secret = secret;
         }
 
         public string GetCode()
         {
-            return totp.GeneratedPassword;
+            return _totp.GeneratedPassword;
         }
 
         public bool ConfirmCode(string code)
         {
             var time = DateTime.UtcNow;
             Debug.WriteLine(time);
-            if (this.totp.GeneratedPassword.Equals(code))
+            if (this._totp.GeneratedPassword.Equals(code))
             {
                 return true;
             }
-            for (var i = 0; i < tolerance; i++)
+            for (var iterator = 0; iterator < Tolerance; iterator++)
             {
-                var tmpTotp = new TimeBasedPasswordGenerator(true, this.secret);
-                tmpTotp.TimeInterval = TimeSpan.FromSeconds(period);
-                tmpTotp.PasswordLength = digits;
-                time = time.AddSeconds(-period);
+                var tmpTotp = new TimeBasedPasswordGenerator(true, this._secret);
+                tmpTotp.TimeInterval = TimeSpan.FromSeconds(Period);
+                tmpTotp.PasswordLength = Digits;
+                time = time.AddSeconds(-Period);
                 tmpTotp.Timestamp = time;
-                var checkcode = tmpTotp.GeneratedPassword;
-                if (checkcode.Equals(code))
+                var checkCode = tmpTotp.GeneratedPassword;
+                if (checkCode.Equals(code))
                 {
                     return true;
                 }

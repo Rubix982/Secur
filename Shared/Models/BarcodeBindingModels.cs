@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace Shared.Models
 {
-    public class requestSharedKeyBindingModel
+    public class RequestSharedKeyBindingModel
     {
         [Required]
         [Display(Name = "Key")]

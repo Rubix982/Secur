@@ -1,8 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shared
 {
@@ -15,7 +13,7 @@ namespace Shared
             {
                 Array.Reverse(arr);
             }
-            return "0x" + BitConverter.ToString(arr).Replace("-", "");
+            return $"0x{BitConverter.ToString(arr).Replace("-", "")}";
         }
     }
 }
