@@ -1,0 +1,3 @@
+[submodule "SecurMobileApp"]
+	path = SecurMobileApp
+	url = https://github.com/mehrankamal/SecurMobileApp
