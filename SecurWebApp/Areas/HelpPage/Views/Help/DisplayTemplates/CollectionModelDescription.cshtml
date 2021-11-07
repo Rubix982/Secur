@@ -1,0 +1,6 @@
+@using ExpiringBarcode.Areas.HelpPage.ModelDescriptions
+@model ExpiringBarcode.Areas.HelpPage.ModelDescriptions.CollectionModelDescription
+@if (Model.ElementDescription is ComplexTypeModelDescription)
+{
+    @Html.DisplayFor(m => m.ElementDescription)
+}
