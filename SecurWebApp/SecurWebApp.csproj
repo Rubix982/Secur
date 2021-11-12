@@ -11,11 +11,26 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="10.1.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.12" />
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.12" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.12" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.12" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.12" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.12" />
+        <PackageReference Include="Microsoft.Owin" Version="4.2.0" />
+        <PackageReference Include="Microsoft.Owin.Security.OAuth" Version="4.2.0" />
+        <PackageReference Include="Owin" Version="1.0.0" />
+        <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Providers" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SecurDataAccessLayer\SecurDataAccessLayer.csproj" />
+      <ProjectReference Include="..\SecurLibrary\SecurLibrary.csproj" />
     </ItemGroup>
 
 </Project>
