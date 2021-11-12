@@ -1,12 +1,12 @@
-using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SecurDataAccessLayer.Externals.UserExternals
 {
-    public class UpdateUser
+    public abstract class UpdateUser
     {
         [Required]
         [MaxLength(100)]
-        public string Name { get; set; }
+        protected string Name { get; set; }
 
         [Required]
         [MinLength(4)]

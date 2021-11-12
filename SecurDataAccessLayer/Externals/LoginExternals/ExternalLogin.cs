@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SecurDataAccessLayer.Externals.LoginExternals
 {
-    public class ExternalLogin
+    public abstract class ExternalLogin
     {
         [Required]
         public string Name { get; set; }

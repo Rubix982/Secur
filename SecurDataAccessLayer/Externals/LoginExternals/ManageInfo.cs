@@ -1,9 +1,9 @@
-using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SecurDataAccessLayer.Externals.LoginExternals
 {
-    public class ManageInfo
+    public abstract class ManageInfo
     {
         [Required]
         public string LocalLoginProvider { get; set; }

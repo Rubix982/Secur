@@ -1,8 +1,8 @@
-using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SecurDataAccessLayer.Externals.LoginExternals
 {
-    public class UserLoginInfo
+    public abstract class UserLoginInfo
     {
         [Required]
         public string LoginProvider { get; set; }

@@ -1,8 +1,8 @@
-using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SecurDataAccessLayer.Externals.UserExternals
 {
-    public class UpdateUser
+    public abstract class WriteUser
     {
         [Required]
         [MaxLength(100)]

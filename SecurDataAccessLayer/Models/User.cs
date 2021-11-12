@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,7 +9,7 @@ namespace SecurDataAccessLayer.Models
         [ScaffoldColumn(false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public int User_Id { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         [MaxLength(100)]
